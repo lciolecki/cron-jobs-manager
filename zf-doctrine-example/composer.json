@@ -1,0 +1,27 @@
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "http://github.com/lciolecki/cron-jobs-manager"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable" : true,
+    "require": {
+        "php": ">=5.3",
+        "zendframework/zendframework1": "1.12.*",
+        "guilhermeblanco/zendframework1-doctrine2": "dev-master",
+        "lciolecki/cron-jobs-manager": "dev-master"
+    },
+    "include-path": [
+        "library/",
+        "vendor/guilhermeblanco/zendframework1-doctrine2/library/"
+    ],
+    "autoload": {
+        "psr-0": {
+            "Core": "library"
+        }
+    }
+}
+
+
