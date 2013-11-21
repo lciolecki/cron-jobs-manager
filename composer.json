@@ -3,21 +3,14 @@
     "author": "Łukasz Ciołecki",
     "description": "PHP Cron Jobs Manager",
     "type": "library",
-    "keywords": [
-        "php",
-        "cron"
-    ],
-    "homepage": "",
+    "keywords": ["php", "cron", "jobs", "zend", "doctrine"],
     "license": "BSD-3-Clause",
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.3"
     },
     "autoload": {
         "psr-0": {
             "Extlib\\": "library"
         }
-    },
-    "include-path": [
-        "library/"
-    ]
+    }
 }
