@@ -10,16 +10,17 @@
     "require": {
         "php": ">=5.3",
         "zendframework/zendframework1": "1.12.*",
-        "guilhermeblanco/zendframework1-doctrine2": "dev-master",
-        "lciolecki/cron-jobs-manager": "dev-master"
+        "guilhermeblanco/zendframework1-doctrine2": "dev-master"
     },
     "include-path": [
         "library/",
+        "../library/",
         "vendor/guilhermeblanco/zendframework1-doctrine2/library/"
     ],
     "autoload": {
         "psr-0": {
-            "Core": "library"
+            "Core": "library",
+            "Extlib\\": "../library"
         }
     }
 }
