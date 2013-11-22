@@ -7,9 +7,9 @@ PHP Cron Jobs Manager is simple library to manage cron jobs task in your applica
 * **Adapter** - Representation of connector to data container like Zend_Db, Doctrine, Propel, etc..
 * **Job** - Representation of models/entities from data container. Has necessary information about task to do.
 * **History** - Representation of models/entities, has information about status executed job. 
-* **Task** - Representation of thing to do, must extends from \Extlib\Cron\Task\TaskAbstract - implement run() method.
+* **Task** - Representation of thing to do, must extends from \Extlib\Cron\Task\TaskAbstract - implements run() method.
 
-#Sample using
+#Sample use
 
     $cron = new \Extlib\Cron(new Doctrine2(array(
         Doctrine2::ENTITY_MANAGER => $entityManager,
@@ -23,7 +23,7 @@ PHP Cron Jobs Manager is simple library to manage cron jobs task in your applica
     
 ## Example application zf+doctrine2
 
-In catalog zf-doctrine-example as name suggest is an example application zend framework using doctrine 2. Pleas create database using file : */zf-doctrine-example/docs/database.sql. This sql script create database with two tables: cron_histories and cron_jobs with two task to do (Core_Cron_Task_Test1, Core_Cron_Task_Test2). To run script you must edit Your crontab with command crontab -e and put this line:
+In catalog zf-doctrine-example as name suggest is an example application Zend Framework using Doctrine 2. Please create database using file : */zf-doctrine-example/docs/database.sql. This SQL script create database with two tables: cron_histories and cron_jobs with two task to do (Core_Cron_Task_Test1, Core_Cron_Task_Test2). To run script you must edit Your crontab with command crontab -e and put this line:
 
     
     * * * * * /usr/bin/php */zf-doctrine-example/bin/cron.php  >> /tmp/cron-logs.log 2>&1
