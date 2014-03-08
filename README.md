@@ -32,13 +32,6 @@ In catalog zf-doctrine-example as name suggest is an example application Zend Fr
 ##Installation using Composer
 
     {
-        "minimum-stability": "dev",
-        "repositories": [
-            {
-                "type": "vcs",
-                "url": "http://github.com/lciolecki/cron-jobs-manager"
-            }
-        ],
         "require": {
             "lciolecki/cron-jobs-manager": "dev-master"
         }
