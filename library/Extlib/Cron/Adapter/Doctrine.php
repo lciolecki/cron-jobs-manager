@@ -20,13 +20,13 @@ class Doctrine implements AdapterInterface
     const CONNECTION_NAME = 'doctrineConnectionName';
 
     /* Cron job configuration */
-    const JOB_TABLE_NAME = 'jobTableName';
+    const JOB_MODEL_NAME = 'jobModelName';
     const JOB_COL_STATUS = 'jobStatusColumn';
     const JOB_COL_DATE_LAST_RUN = 'jobDateLastRunColumn';
     const JOB_COL_PRIORITY = 'jobPriorityColumn';
 
     /* History cron job configuration */
-    const HISTORY_TABELE_NAME = 'historyTableName';
+    const HISTORY_MODEL_NAME = 'historyModelName';
 
     /**
      * Instance of connection
@@ -36,11 +36,11 @@ class Doctrine implements AdapterInterface
     protected $connection = null;
 
     /**
-     * Cron job table name
+     * Cron job model name
      * 
      * @var string
      */
-    protected $jobTableName = null;
+    protected $jobModelName = null;
 
     /**
      * Cron job status column name
@@ -64,11 +64,11 @@ class Doctrine implements AdapterInterface
     protected $jobPriorityColumn = null;
 
     /**
-     * History cron job table name
+     * History cron job model name
      *
      * @var string
      */
-    protected $historyTableName = null;
+    protected $historyModelName = null;
 
     /**
      * Instance of current date
@@ -89,8 +89,8 @@ class Doctrine implements AdapterInterface
                 case self::CONNECTION_NAME:
                     $this->connection = \Doctrine_Manager::getInstance()->getConnection($value);
                     break;
-                case self::JOB_TABELE_NAME:
-                    $this->jobTableName = (string) $value;
+                case self::JOB_MODEL_NAME:
+                    $this->jobModelName = (string) $value;
                     break;
                 case self::JOB_COL_STATUS:
                     $this->jobStatusColumn = (string) $value;
@@ -101,8 +101,8 @@ class Doctrine implements AdapterInterface
                 case self::JOB_COL_PRIORITY:
                     $this->taskPriorityColumn = (string) $value;
                     break;
-                case self::HISTORY_TABELE_NAME:
-                    $this->historyTableName = (string) $value;
+                case self::HISTORY_MODEL_NAME:
+                    $this->historyModelName = (string) $value;
                     break;
                 default:
                     break;
@@ -125,7 +125,7 @@ class Doctrine implements AdapterInterface
     public function getJobs($limit = null)
     {
         $query = \Doctrine_Query::create($this->connection)
-                ->from($this->jobTableName)
+                ->from($this->jobModelName)
                 ->where("$this->jobStatusColumn = ?", JobInterface::STATUS_ACTIVE)
                 ->orderBy("$this->jobPriorityColumn DESC")
                 ->addOrderBy("$this->jobDateLastRunColumn ASC");
@@ -180,7 +180,7 @@ class Doctrine implements AdapterInterface
      */
     public function history($status, JobInterface $job, $message = null)
     {
-        $history = new $this->historyTableName();
+        $history = new $this->historyModelName();
         if (!$history instanceof HistoryInterface) {
             throw new \InvalidArgumentException(sprintf('History must be an instance of "Extlib\Cron\Adapter\Job\HistoryInterface", "%s" given.', get_class($history)));
         }
